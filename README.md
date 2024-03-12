@@ -22,8 +22,8 @@ mvn clean install
 
 ```xml
 <dependency>
-    <groupId>com.tuempresa</groupId>
-    <artifactId>bconfiguration</artifactId>
+    <groupId>me.biiee3l</groupId>
+    <artifactId>bConfiguration</artifactId>
     <version>1.0.0</version> <!-- Reemplaza con la versión actual -->
 </dependency>
 ```
