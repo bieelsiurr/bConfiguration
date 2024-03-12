@@ -2,6 +2,7 @@ package me.biiee3l.bconfig.config.types;
 
 import com.sun.corba.se.spi.ior.ObjectKey;
 import me.biiee3l.bconfig.config.Configuration;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -20,9 +21,12 @@ public class YamlConfiguration extends Configuration {
     @Override
     public void save() {
         try{
-            Yaml yaml = new Yaml();
-            FileWriter writer = new FileWriter(file);
-            yaml.dump(config, writer);
+           DumperOptions options = new DumperOptions();
+           options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+
+           Yaml yaml = new Yaml(options);
+           FileWriter writer = new FileWriter(file);
+           yaml.dump(config, writer);
         }catch (Exception e){
             e.printStackTrace(System.out);
         }
