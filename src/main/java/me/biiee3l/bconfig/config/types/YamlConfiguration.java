@@ -5,6 +5,7 @@ import me.biiee3l.bconfig.config.Configuration;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,18 +30,22 @@ public class YamlConfiguration extends Configuration {
 
     @Override
     public void load() {
-        try{
+        try {
             file.getParentFile().mkdirs();
-            if(!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
 
             Yaml yaml = new Yaml();
-            InputStream targetStream = new FileInputStream(file);
-            Map<String, Object> config = yaml.load(targetStream);
-            if(config != null) this.config = config;
-        }catch (Exception e){
+            try (InputStream inputStream = Files.newInputStream(file.toPath())) {
+                Map<String, Object> config = yaml.load(inputStream);
+                if (config != null) {
+                    this.config = config;
+                }
+            }
+        } catch (IOException e) {
             e.printStackTrace(System.out);
         }
     }
+
 }
