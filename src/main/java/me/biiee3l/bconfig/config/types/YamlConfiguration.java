@@ -6,6 +6,7 @@ import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +43,8 @@ public class YamlConfiguration extends Configuration {
 
             Yaml yaml = new Yaml();
             try (InputStream inputStream = Files.newInputStream(file.toPath())) {
-                Map<String, Object> config = yaml.load(inputStream);
+                InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+                Map<String, Object> config = yaml.load(reader);
                 if (config != null) {
                     this.config = config;
                 }
@@ -51,5 +53,6 @@ public class YamlConfiguration extends Configuration {
             e.printStackTrace(System.out);
         }
     }
+
 
 }

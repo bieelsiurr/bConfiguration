@@ -16,5 +16,7 @@ public interface IConfiguration {
 
     void set(String key, Object value);
 
+    void addDefault(String key, Object value);
+
     int getInt(String number);
 }
