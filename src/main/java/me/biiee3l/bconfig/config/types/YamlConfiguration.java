@@ -1,9 +1,12 @@
 package me.biiee3l.bconfig.config.types;
 
+import com.sun.corba.se.spi.ior.ObjectKey;
 import me.biiee3l.bconfig.config.Configuration;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class YamlConfiguration extends Configuration {
 
@@ -34,7 +37,8 @@ public class YamlConfiguration extends Configuration {
 
             Yaml yaml = new Yaml();
             InputStream targetStream = new FileInputStream(file);
-            config = yaml.load(targetStream);
+            Map<String, Object> config = yaml.load(targetStream);
+            if(config != null) this.config = config;
         }catch (Exception e){
             e.printStackTrace(System.out);
         }

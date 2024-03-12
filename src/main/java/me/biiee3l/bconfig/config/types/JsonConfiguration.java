@@ -42,7 +42,8 @@ public class JsonConfiguration extends Configuration {
 
             Type type = new TypeToken<Map<String, Object>>() {}.getType();
 
-            config = gsonBuilder.create().fromJson(reader, type);
+            Map<String, Object> config = gsonBuilder.create().fromJson(reader, type);
+            if(config != null) this.config = config;
         }catch (Exception e){
             e.printStackTrace(System.out);
         }
