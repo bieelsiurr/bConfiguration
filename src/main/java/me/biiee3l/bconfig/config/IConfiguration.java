@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IConfiguration {
 
-    void save() throws IOException;
-    void load() throws IOException;
+    void save();
+    void load();
 
     Object get(String key);
     String getString(String key);
@@ -15,4 +15,6 @@ public interface IConfiguration {
     List<?> getList(String key);
 
     void set(String key, Object value);
+
+    int getInt(String number);
 }

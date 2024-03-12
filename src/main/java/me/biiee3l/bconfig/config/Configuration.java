@@ -32,4 +32,9 @@ public abstract class Configuration implements IConfiguration {
     public String getString(String key) {
         return (String) get(key);
     }
+
+    @Override
+    public int getInt(String key) {
+        return (int) get(key);
+    }
 }

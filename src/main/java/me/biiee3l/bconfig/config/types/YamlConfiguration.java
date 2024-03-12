@@ -14,21 +14,29 @@ public class YamlConfiguration extends Configuration {
     }
 
     @Override
-    public void save() throws IOException {
-        Yaml yaml = new Yaml();
-        FileWriter writer = new FileWriter(file);
-        yaml.dump(config, writer);
+    public void save() {
+        try{
+            Yaml yaml = new Yaml();
+            FileWriter writer = new FileWriter(file);
+            yaml.dump(config, writer);
+        }catch (Exception e){
+            e.printStackTrace(System.out);
+        }
     }
 
     @Override
-    public void load() throws IOException {
-        file.getParentFile().mkdirs();
-        if(!file.exists()){
-            file.createNewFile();
-        }
+    public void load() {
+        try{
+            file.getParentFile().mkdirs();
+            if(!file.exists()){
+                file.createNewFile();
+            }
 
-        Yaml yaml = new Yaml();
-        InputStream targetStream = new FileInputStream(file);
-        config = yaml.load(targetStream);
+            Yaml yaml = new Yaml();
+            InputStream targetStream = new FileInputStream(file);
+            config = yaml.load(targetStream);
+        }catch (Exception e){
+            e.printStackTrace(System.out);
+        }
     }
 }
