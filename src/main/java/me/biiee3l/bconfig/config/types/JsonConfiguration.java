@@ -30,9 +30,9 @@ public class JsonConfiguration extends Configuration {
         }
     }
 
-    public void load() {
+    public boolean load() {
         try{
-            file.getParentFile().mkdirs();
+            if (file.getParentFile() != null) file.getParentFile().mkdirs();
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -44,8 +44,10 @@ public class JsonConfiguration extends Configuration {
 
             Map<String, Object> config = gsonBuilder.create().fromJson(reader, type);
             if(config != null) this.config = config;
+            return true;
         }catch (Exception e){
             e.printStackTrace(System.out);
+            return false;
         }
     }
 }

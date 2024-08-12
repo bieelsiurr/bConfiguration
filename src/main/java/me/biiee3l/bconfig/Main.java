@@ -11,7 +11,9 @@ public class Main {
         Configuration configuration = new YamlConfiguration(new File("filename.yml"));
 
         // Set this where you like to load the file
-        configuration.load();
+        if (!configuration.load()){
+            System.err.println("Can't load configuration properly.");
+        }
 
         // Start customizing your Configuration file
         configuration.set("key", "value");

@@ -1,8 +1,6 @@
 package me.biiee3l.bconfig.config;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Configuration implements IConfiguration {
 
@@ -47,9 +45,27 @@ public abstract class Configuration implements IConfiguration {
         return (List<?>) get(key);
     }
 
+    public Set<String> keySet(){
+        return config.keySet();
+    }
+
+    @Override
+    public List<Integer> getIntegerList(String key) {
+        return (List<Integer>) get(key);
+    }
+
+    @Override
+    public List<Long> getLongList(String key) {
+        return (List<Long>) get(key);
+    }
+
     @Override
     public List<String> getStringList(String key) {
         return (List<String>) get(key);
+    }
+
+    public long getLong(String key) {
+        return (long) get(key);
     }
 
     @Override

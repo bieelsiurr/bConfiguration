@@ -34,9 +34,9 @@ public class YamlConfiguration extends Configuration {
     }
 
     @Override
-    public void load() {
+    public boolean load() {
         try {
-            file.getParentFile().mkdirs();
+            if (file.getParentFile() != null) file.getParentFile().mkdirs();
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -48,9 +48,11 @@ public class YamlConfiguration extends Configuration {
                 if (config != null) {
                     this.config = config;
                 }
+                return true;
             }
         } catch (IOException e) {
             e.printStackTrace(System.out);
+            return false;
         }
     }
 

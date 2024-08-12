@@ -7,11 +7,13 @@ import java.util.List;
 public interface IConfiguration {
 
     void save();
-    void load();
+    boolean load();
 
     Object get(String key);
     String getString(String key);
     List<String> getStringList(String key);
+    List<Long> getLongList(String key);
+    List<Integer> getIntegerList(String key);
     List<?> getList(String key);
 
     void set(String key, Object value);

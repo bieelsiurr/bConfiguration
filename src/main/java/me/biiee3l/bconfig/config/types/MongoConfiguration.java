@@ -22,12 +22,13 @@ public class MongoConfiguration extends Configuration {
     }
 
     @Override
-    public void load() {
+    public boolean load() {
         Document document = collection.find(query).first();
         if(document != null){
             config = document;
         }else {
             config = query;
         }
+        return true;
     }
 }
