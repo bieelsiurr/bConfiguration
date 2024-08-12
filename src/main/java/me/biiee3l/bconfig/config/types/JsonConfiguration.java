@@ -19,13 +19,18 @@ public class JsonConfiguration extends Configuration {
 
     @Override
     public void save() {
-        try{
+        try {
             Reader reader = new FileReader(file);
             Type type = new TypeToken<Map<String, Object>>() {}.getType();
+            Map<String, Object> data = new Gson().fromJson(reader, type);
 
-            Gson gson = new Gson().fromJson(reader, type);
-            gson.toJson(config);
-        }catch (Exception e){
+            data.putAll(config);
+
+            Writer writer = new FileWriter(file);
+            new Gson().toJson(data, writer);
+            writer.close();
+            reader.close();
+        } catch (Exception e) {
             e.printStackTrace(System.out);
         }
     }
