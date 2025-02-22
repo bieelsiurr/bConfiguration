@@ -68,6 +68,10 @@ public abstract class Configuration implements IConfiguration {
         return (long) get(key);
     }
 
+    public boolean getBoolean(String key) {
+        return (boolean) get(key);
+    }
+
     @Override
     public String getString(String key) {
         return (String) get(key);

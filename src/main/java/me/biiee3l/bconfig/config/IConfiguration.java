@@ -20,5 +20,6 @@ public interface IConfiguration {
 
     void addDefault(String key, Object value);
 
+    boolean getBoolean(String key);
     int getInt(String number);
 }
