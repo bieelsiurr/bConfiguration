@@ -1,5 +1,4 @@
 # bConfiguration, the file-in-one solution. ⚙️
-> (sí, esto es código privado, pero me apetecía crear esto)
 
 ## Descripción 💻
 bConfiguration es una biblioteca que te permite gestionar todas tus configuraciones en formatos YAML, JSON o almacenarlas directamente en MongoDB. Con esta herramienta, puedes mantener tus configuraciones de forma centralizada y acceder a ellas fácilmente desde tu aplicación.
