@@ -14,6 +14,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>lynk-project</id>
+            <url>https://repo.lynkproject.us/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
         <dependency>
@@ -34,5 +41,16 @@
             <version>3.12.14</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>lynk-project-snapshots</id>
+            <url>https://repo.lynkproject.us/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>lynk-project-releases</id>
+            <url>https://repo.lynkproject.us/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
