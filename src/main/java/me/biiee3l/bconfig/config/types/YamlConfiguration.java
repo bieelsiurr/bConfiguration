@@ -3,6 +3,7 @@ package me.biiee3l.bconfig.config.types;
 import me.biiee3l.bconfig.config.Configuration;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import java.util.concurrent.ConcurrentHashMap;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -49,7 +50,7 @@ public class YamlConfiguration extends Configuration {
                  InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
 
                 Map<String, Object> loaded = yaml.load(reader);
-                this.root = (loaded != null) ? loaded : new HashMap<>();
+                this.root = (loaded != null) ? new ConcurrentHashMap<>(loaded) : new ConcurrentHashMap<>();
                 return true;
             }
         } catch (IOException e) {
