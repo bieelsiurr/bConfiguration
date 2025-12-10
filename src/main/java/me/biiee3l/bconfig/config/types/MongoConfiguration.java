@@ -2,6 +2,7 @@ package me.biiee3l.bconfig.config.types;
 
 import com.mongodb.client.MongoCollection;
 import me.biiee3l.bconfig.config.Configuration;
+import java.util.concurrent.ConcurrentHashMap;
 import org.bson.Document;
 
 public class MongoConfiguration extends Configuration {
@@ -16,7 +17,7 @@ public class MongoConfiguration extends Configuration {
 
     @Override
     public void save() {
-        Document document = new Document(config);
+        Document document = new Document(root);
         collection.deleteMany(document);
         collection.insertOne(document);
     }
@@ -25,9 +26,9 @@ public class MongoConfiguration extends Configuration {
     public boolean load() {
         Document document = collection.find(query).first();
         if(document != null){
-            config = document;
+            root = new ConcurrentHashMap<>(document);
         }else {
-            config = query;
+            root = new ConcurrentHashMap<>(query);
         }
         return true;
     }
