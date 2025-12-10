@@ -31,7 +31,7 @@ public class YamlConfiguration extends Configuration {
             Yaml yaml = new Yaml(options);
 
             try (Writer writer = new OutputStreamWriter(Files.newOutputStream(file.toPath()), StandardCharsets.UTF_8)) {
-                yaml.dump(config, writer);
+                yaml.dump(root, writer);
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -49,7 +49,7 @@ public class YamlConfiguration extends Configuration {
                  InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
 
                 Map<String, Object> loaded = yaml.load(reader);
-                this.config = (loaded != null) ? loaded : new HashMap<>();
+                this.root = (loaded != null) ? loaded : new HashMap<>();
                 return true;
             }
         } catch (IOException e) {
