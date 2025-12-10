@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  *
  * Note: This implementation keeps nested maps as {@link ConcurrentHashMap} instances when created internally.
  */
-public abstract class ConfigurationConcurrent implements IConfiguration {
+public abstract class Configuration implements IConfiguration {
 
     /**
      * Root map (concurrent).
