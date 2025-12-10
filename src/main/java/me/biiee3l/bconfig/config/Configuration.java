@@ -20,7 +20,7 @@ public abstract class Configuration implements IConfiguration {
     /**
      * Root map (concurrent).
      */
-    protected final ConcurrentHashMap<String, Object> root = new ConcurrentHashMap<>();
+    protected ConcurrentHashMap<String, Object> root = new ConcurrentHashMap<>();
 
     private static final String EMPTY_KEY = "";
 
