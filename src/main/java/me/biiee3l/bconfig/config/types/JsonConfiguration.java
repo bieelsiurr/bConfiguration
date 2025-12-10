@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import me.biiee3l.bconfig.config.Configuration;
+import java.util.concurrent.ConcurrentHashMap;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -24,7 +25,7 @@ public class JsonConfiguration extends Configuration {
             Type type = new TypeToken<Map<String, Object>>() {}.getType();
             Map<String, Object> data = new Gson().fromJson(reader, type);
 
-            data.putAll(config);
+            data.putAll(root);
 
             Writer writer = new FileWriter(file);
             new Gson().toJson(data, writer);
@@ -48,7 +49,7 @@ public class JsonConfiguration extends Configuration {
             Type type = new TypeToken<Map<String, Object>>() {}.getType();
 
             Map<String, Object> config = gsonBuilder.create().fromJson(reader, type);
-            if(config != null) this.config = config;
+            if(root != null) this.root = new ConcurrentHashMap<>(root);
             return true;
         }catch (Exception e){
             e.printStackTrace(System.out);
